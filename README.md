@@ -6,7 +6,10 @@ Este projeto feito em C# é um gerenciador de bibliotecas.
 
 ## Autores
   
-- [@lourencogabe]((https://github.com/lourencogabe)
+- [@lourencogabe](https://github.com/lourencogabe)
+- [@matheus]
+- [@gabrielcouto]
+- [@derickfalcoski]
 
 ## Aprendizados
 
