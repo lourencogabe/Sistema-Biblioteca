@@ -6,11 +6,9 @@ public class Pesquisador{
     public string? NomePesquisador {get; set;}
     public string? DocumentoPesquisador {get; set;}
     public string? EnderecoPesquisador {get; set;}
-    public Emprestimo? Emprestimo{get; set;}
 
     //Construtor vázio
     public Pesquisador (){
-        
     }
 
     //Construtor com parâmetros

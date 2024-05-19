@@ -5,10 +5,10 @@ public class Emprestimo{
     public int Id {get; set;}
     public DateTime? DataEmprestimo {get; set;}
     public DateTime? RetornoEmprestimo  {get; set;}
-    public int? LivroId {get; set;}
     public int? PesquisadorId {get; set;}
-    public Livro? LivroEmprestimo {get; set;}
-    public Pesquisador? PesquisadorEmprestimo {get; set;}
+    public Pesquisador? Pesquisador {get; set;}
+    public int? LivroId {get; set;}
+    public Livro? Livro {get; set;}
 
     
     //Construtor vázio
