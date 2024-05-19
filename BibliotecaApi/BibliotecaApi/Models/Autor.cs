@@ -5,7 +5,7 @@ public class Autor{
     public int Id {get; set;}
     public string? NomeAutor {get; set;}
     public string? NacionalidadeAutor {get; set;}
-    public Livro? Livro  {get; set;}
+    public Livro? Livro{get; set;}
 
     //Construtor vázio
     public Autor (){
