@@ -9,6 +9,12 @@ module.exports = {
       lg:'992px',
       xl:'1200px',
       xxl:'1700px'
+    },
+    colors:{
+      'azul-principal': '#61dafb',
+      'cinza-escuro':'#20232a',
+      'cinza-claro':'#282c34',
+      'branco':'#ffffff'
     }
   },
   plugins: [],
