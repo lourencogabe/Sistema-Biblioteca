@@ -2,9 +2,7 @@ import React from "react";
 
 function Pesquisador() {
     return (
-        <div>
-            <h1>Construção do componente Pesquisador em breve...</h1>
-        </div>
+      <a>Componente Pesquisador em construção...</a>
     )
 }
 
