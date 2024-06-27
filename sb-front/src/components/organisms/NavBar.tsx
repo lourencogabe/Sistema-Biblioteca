@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Livro from "../templates/Livro";
+import Livro from "../templates/LivroHome";
 import Emprestimos from "../templates/Emprestimo";
 import Pesquisador from "../templates/Pesquisador";
 import Autor from "../templates/Autor";
-import NavLink from "../molecules/Navlink";
+import NavLink from "../molecules/NavLink";
 
 
 function NavBar() {
@@ -12,7 +11,7 @@ function NavBar() {
         <BrowserRouter>
             <nav className="bg-cinza-claro p-1 m-4 rounded-full">
                 <div className="flex justify-between items-center">
-                    <div className="p-1 px-4 text-azul-principal text-2xl font-mono">
+                    <div className="p-1 px-4 text-azul-principal text-lg font-mono">
                     Sb-Front
                     </div>
                         <NavLink/>
