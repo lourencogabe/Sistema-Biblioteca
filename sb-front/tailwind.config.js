@@ -14,7 +14,8 @@ module.exports = {
       'azul-principal': '#61dafb',
       'cinza-escuro':'#20232a',
       'cinza-claro':'#282c34',
-      'branco':'#ffffff'
+      'branco':'#ffffff',
+      'verde':'#25C73A'
     }
   },
   plugins: [],
