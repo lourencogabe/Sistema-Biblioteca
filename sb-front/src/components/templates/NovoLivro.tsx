@@ -1,12 +1,12 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 function NovoLivro() {
     //Cria as variáveis de manipulação de dados
     const [id, Setid] = useState<number>()
     const [nomeLivro, setNomeLivro] = useState<string>('')
     const [autorId, setAutorId] = useState<number>(0)
-    const [sinopse, setSinopse] = useState<string>('')
+    const [sinopseLivro, setSinopseLivro] = useState<string>('')
     const [dataPublicacaoLivro, setDataPublicacaoLivro] = useState<string>('')
 
     function handleSubmit(e: any) {
@@ -17,11 +17,11 @@ function NovoLivro() {
             id,
             nomeLivro,
             autorId,
-            sinopse,
+            sinopseLivro,
             dataPublicacaoLivro
         }
 
-        axios.post('http://localhost:5041/biblioteca/api/pesquisador/cadastrar', novoLivro)
+        axios.post('http://localhost:5041/biblioteca/api/livro/cadastrar', novoLivro)
         .then(response => { console.log(response) })
         .catch(error =>{console.error("Problema ao cadastrar o livro")})
     }
@@ -44,7 +44,7 @@ function NovoLivro() {
                 </label>
                 <label>
                     Sinopse:
-                    <input type="text" value={sinopse} onChange={e => setSinopse(e.target.value)} required/>
+                    <input type="text" value={sinopseLivro} onChange={e => setSinopseLivro(e.target.value)} required/>
                 </label>
                 <label>
                     Data de Publicação:

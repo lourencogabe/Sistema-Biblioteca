@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Livro } from "../../interfaces/Livro";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function LivroHome() {
     const [livros, setLivros] = useState<Livro[]>([])
     
-    //Requisição do tipo get para listar livros
-    useEffect(()=> {
+    function carregarLivro(){
         axios.get('http://localhost:5041/biblioteca/api/livro/listar').then(response =>{
             setLivros(response.data)
         }).catch(error => {
-            console.error("Erro ao buscar requisicao", error)
+            console.error("Erro ao buscar lista de livros", error)
         })
+    }
+
+    function deletar(id:number) {
+        axios.delete('http://localhost:5041/biblioteca/api/autor/deletar/'+id)
+            .then(response => { console.log(response) })
+            .catch(error => { console.error("Problema ao deletar autor") })
+    }
+    
+    //Requisição do tipo get para listar livros
+    useEffect(()=> {
+        carregarLivro()
     }, [])
 
     return (
@@ -33,10 +44,17 @@ function LivroHome() {
                             <td className="font-sans text-branco" >{livro.nomeLivro}</td>
                             <td className="font-sans text-branco">{livro.sinopseLivro}</td>
                             <td className="font-sans text-branco">{livro.dataPublicacaoLivro}</td>
+                            <td>
+                            <button onClick={() => {deletar(livro.id!)}}>
+                            Deletar
+                            </button>
+                        </td>
+                        <td><button type="submit"><Link to={`/alterar/${livro.id}`}>Alterar</Link></button></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <button type="submit"><Link to="/novoLivro">Novo Livro</Link></button>
         </div>
     )
 }
