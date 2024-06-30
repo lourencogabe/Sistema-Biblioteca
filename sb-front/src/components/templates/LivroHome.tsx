@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Livro } from "../../interfaces/Livro";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaTrashAlt, FaEdit, FaAd, FaPlus } from "react-icons/fa";
+import { FaTrashAlt, FaEdit} from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 
 function LivroHome() {
@@ -36,7 +36,7 @@ function LivroHome() {
                         <FaCirclePlus className="text-3xl text-verde"/>
                     </Link>
                 </section>
-                <table className="w-full mt-6 text-left border-collapse shadow-md  overflow-hidden">
+                <table className="w-full mt-6 text-left border-collapse shadow-md rounded-xl overflow-hidden">
                     <thead className="bg-azul-claro text-verde text-center">
                         <tr>
                             <th className="py-3 px-4 font-mono">Id</th>
@@ -48,7 +48,7 @@ function LivroHome() {
                     </thead>
                     <tbody className="bg-white">
                         {livros.map(livro => (
-                            <tr key={livro.id} className="border-b-2 border-verde last:border-none hover:bg-gray-100">
+                            <tr key={livro.id} className="shadow-lg rounded-xl hover:bg-gray-100">
                                 <td className="py-3 px-4 text-gray-800">{livro.id}</td>
                                 <td className="py-3 px-4 text-gray-800">{livro.nomeLivro}</td>
                                 <td className="py-3 px-4 text-gray-800">{livro.sinopseLivro}</td>
@@ -61,7 +61,6 @@ function LivroHome() {
                         ))}
                     </tbody>
                 </table>
-
             </div>
         </div>
     );
