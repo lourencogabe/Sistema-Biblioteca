@@ -1,21 +1,39 @@
+import { FaBook,FaHome } from "react-icons/fa"
+import { FaUser,FaAddressBook,FaFilePen } from "react-icons/fa6"
 import { Link } from "react-router-dom"
 
 function NavBar() {
     return (
-        <nav className="bg-blue-500 p-1 m-4	rounded-full">
-            <div className="flex justify-between items-center">
-                <div className="p-1 px-4 text-white text-2xl font-bold ">
-                    Sb-Front
-                </div>
-                <div className="p-1 px-5 space-x-4">
-                    <Link className="text-branco hover:text-verde" to="/">Home</Link>
-                    <Link className="text-branco hover:text-verde" to="/acervo">Acervo</Link>
-                    <Link className="text-branco hover:text-verde" to="/pesquisador">Pesquisadores</Link>
-                    <Link className="text-branco hover:text-verde" to="/autor">Autores</Link>
-                    <Link className="text-branco hover:text-verde" to="/emprestimo">Emprestimos</Link>
-                </div>
+        <nav className="bg-azul-claro p-5 w-56 fixed top-4 left-4 flex flex-col justify-between h-[calc(100vh-2rem)] shadow-lg rounded-xl">
+            {/* Cabeçalho com o Título */}
+            <div className="p-2 px-4 rounded-full text-white text-2xl font-bold text-azul-escuro">
+                Sb-Front
+            </div>
+            {/* Links do Menu */}
+            <div className="mt-6 mb-4 flex flex-col space-y-4 text-lg text-white">
+                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/">
+                    <FaHome />
+                    <span>Home</span>
+                </Link>
+                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/acervo">
+                    <FaBook />
+                    <span>Acervo</span>
+                </Link>
+                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/pesquisador">
+                    <FaUser />
+                    <span>Pesquisadores</span>
+                </Link>
+                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/autor">
+                    <FaAddressBook />
+                    <span>Autores</span>
+                </Link>
+                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/emprestimo">
+                    <FaFilePen />
+                    <span>Empréstimos</span>
+                </Link>
             </div>
         </nav>
+
     )
 }
 

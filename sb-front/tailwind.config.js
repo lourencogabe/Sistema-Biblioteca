@@ -11,11 +11,15 @@ module.exports = {
       xxl:'1700px'
     },
     colors:{
-      'azul-principal': '#61dafb',
-      'cinza-escuro':'#20232a',
-      'cinza-claro':'#282c34',
-      'branco':'#ffffff',
-      'verde':'#25C73A'
+      'cinza-claro': '#E5E5E5',
+      'cinza-escuro': '#333333',
+      'branco': '#FFFFFF',
+      'verde': '#66D16A',
+      'azul-claro': '#F0F4F8',
+      'azul-escuro': '#007AFF',
+      'vermelho-claro': '#FF3B30',
+      'vermelho-escuro': '#C62828',
+      'amarelo': '#F6CD4B'
     }
   },
   plugins: [],

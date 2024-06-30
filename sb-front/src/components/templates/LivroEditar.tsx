@@ -31,12 +31,12 @@ function LivroEditar() {
     e.preventDefault();
 
     const livro: Livro = {
-        id: 0,
-        nomeLivro: nomeLivro,
-        autorId: autorId,
-        sinopseLivro: sinopseLivro,
-        dataPublicacaoLivro: dataPublicacaoLivro,
-    };
+      id: 0,
+      nomeLivro: nomeLivro,
+      autorId: autorId,
+      sinopseLivro: sinopseLivro,
+      dataPublicacaoLivro: dataPublicacaoLivro,
+  };
 
     axios.put(`http://localhost:5225/api/livro/alterar/${id}`, livro)
       .then((response) => {
