@@ -32,7 +32,7 @@ function NovoLivro() {
         <div className="p-6  bg-azul-claro rounded-lg  shadow-lg w-full h-[calc(100vh-2rem)]">
             <h2 className="font-mono text-2xl font-bold flex justify-center text-verde mb-4"><FaBookReader className="mx-4 text-3xl"/> Novo Livro
             </h2>
-            <form className="space-y-10">
+            <form className="space-y-10" onSubmit={handleSubmit}>
                 <div>
                     <label className="block text-sm font-mono font-bold text-verde">
                         ID do Livro:

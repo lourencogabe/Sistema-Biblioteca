@@ -19,7 +19,8 @@ module.exports = {
       'azul-escuro': '#007AFF',
       'vermelho-claro': '#F85B4D',
       'vermelho-escuro': '#C62828',
-      'amarelo': '#F6CD4B'
+      'amarelo': '#F6CD4B',
+      'roxo':'#af52de'
     }
   },
   plugins: [],

@@ -11,8 +11,8 @@ function NavBar() {
             <span>CodeTeca</span>
             </div>
             {/* Links do Menu */}
-            <div className="mt-6 mb-4 flex flex-col space-y-4 text-lg text-white">
-                <Link className="flex items-center space-x-3 hover:text-amarelo px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/">
+            <div className="mt-6 mb-4 flex flex-col space-y-4 text-lg text-azul-escuro">
+                <Link className="flex items-center space-x-3 hover:text-azul-claro px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/">
                     <FaHome />
                     <span>Home</span>
                 </Link>
@@ -20,15 +20,15 @@ function NavBar() {
                     <FaBook />
                     <span>Acervo</span>
                 </Link>
-                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/pesquisador">
+                <Link className="flex items-center space-x-3 hover:text-vermelho-claro px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/pesquisador">
                     <FaUser />
                     <span>Pesquisadores</span>
                 </Link>
-                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/autor">
+                <Link className="flex items-center space-x-3 hover:text-amarelo px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/autor">
                     <FaAddressBook />
                     <span>Autores</span>
                 </Link>
-                <Link className="flex items-center space-x-3 hover:text-verde px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/emprestimo">
+                <Link className="flex items-center space-x-3 hover:text-roxo px-2 py-1 rounded-md hover:bg-gray-700 transition-all duration-300" to="/emprestimo">
                     <FaFilePen />
                     <span>Empréstimos</span>
                 </Link>

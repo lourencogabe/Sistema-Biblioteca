@@ -19,6 +19,18 @@ Livro livro = new Livro();
 
 //Classe Livro
 
+app.MapGet("/biblioteca/api/autor/buscar/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>
+{
+    Autor? autor = ctx.TabelaAutor.FirstOrDefault(a => a.Id == id); 
+
+    if (autor is null)
+    {
+        return Results.NotFound("autor nao encontrado!");
+    }
+
+    return Results.Ok(autor);
+});
+
 app.MapGet("/biblioteca/api/livro/buscar/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>
 {
     Livro? livro = ctx.TabelaLivros.Include(x => x.Autor).FirstOrDefault(x => x.Id == id);
@@ -33,13 +45,14 @@ app.MapGet("/biblioteca/api/livro/buscar/{id}", ([FromRoute] int id, [FromServic
 
 app.MapGet("/biblioteca/api/livro/listar", ([FromServices] AppDataContext ctx) =>
 {
-
-    if (ctx.TabelaLivros is null)
+    if (ctx.TabelaLivros is null || !ctx.TabelaLivros.Any())
     {
         return Results.NotFound("Acervo vázio!");
     }
 
-    return Results.Ok(ctx.TabelaLivros.ToList());
+    var livrosComAutores = ctx.TabelaLivros.Include(x => x.Autor).ToList();
+
+    return Results.Ok(livrosComAutores);
 });
 
 app.MapPost("/biblioteca/api/livro/cadastrar", ([FromBody] Livro livro, [FromServices] AppDataContext ctx) =>
@@ -100,12 +113,16 @@ app.MapGet("/biblioteca/api/autor/listar", ([FromServices] AppDataContext ctx) =
 
 app.MapPost("/biblioteca/api/autor/cadastrar/", ([FromBody] Autor autor, [FromServices] AppDataContext ctx) =>
 {
+    if (autor == null)
+    {
+        return Results.BadRequest("Autor não pode ser nulo.");
+    }
+
     ctx.TabelaAutor.Add(autor);
     ctx.SaveChanges();
 
-    return Results.Ok("Autor " + autor.NomeAutor + ", cadastrado com sucesso nos registros!");
+    return Results.Ok($"Autor {autor.NomeAutor} cadastrado com sucesso nos registros!");
 });
-
 app.MapDelete("/biblioteca/api/autor/deletar/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>
 {
     Autor? autor = ctx.TabelaAutor.Find(id);
@@ -196,12 +213,11 @@ app.MapPut("biblioteca/api/pesquisador/atualizar/{id}", ([FromRoute] int id, [Fr
 });
 
 //Classe Emprestimo
-app.MapGet("/biblioteca/api/emprestimo/buscar/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>
+app.MapGet("/biblioteca/api/emprestimo/listar", ( [FromServices] AppDataContext ctx) =>
 {
     var emprestimo = ctx.TabelaEmprestimo
                     .Include(e => e.Livro)
                     .Include(e => e.Pesquisador)
-                    .Where(e => e.Id == id)
                     .Select(e => new
                     {
                         e.Id,
@@ -217,7 +233,7 @@ app.MapGet("/biblioteca/api/emprestimo/buscar/{id}", ([FromRoute] int id, [FromS
                         } : null,
                         e.DataEmprestimo,
                         e.RetornoEmprestimo,
-                    }).FirstOrDefault();
+                    }).ToList();
 
     if (emprestimo is null)
     {

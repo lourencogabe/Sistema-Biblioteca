@@ -2,5 +2,15 @@
 export interface Emprestimo{
     id:number
     pesquisadorId:number
-    livroId:number
+    dataEmprestimo:string
+    retornoEmprestimo: string
+    pesquisador: {
+        id: number;
+        nomePesquisador: string;
+        nacionalidadeAutor: string;
+    };
+    livro: {
+        id: number,
+        nomeLivro: string
+    }
 }

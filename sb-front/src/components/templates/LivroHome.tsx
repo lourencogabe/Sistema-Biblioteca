@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Livro } from "../../interfaces/Livro";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTrashAlt, FaEdit} from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 
 function LivroHome() {
+    const navigate = useNavigate();
     const [livros, setLivros] = useState<Livro[]>([])
 
     function carregarLivro() {
@@ -15,10 +16,10 @@ function LivroHome() {
             console.error("Erro ao buscar lista de livros", error)
         })
     }
-
+    
     function deletar(id: number) {
-        axios.delete('http://localhost:5041/biblioteca/api/autor/deletar/' + id)
-            .then(response => { console.log(response) })
+        axios.delete(`http://localhost:5041/biblioteca/api/livro/deletar/${id}`)
+            .then((response) => {alert("Alteração do autor feita com sucesso")})
             .catch(error => { console.error("Problema ao deletar autor") })
     }
 
@@ -37,11 +38,12 @@ function LivroHome() {
                     </Link>
                 </section>
                 <table className="w-full mt-6 text-left border-collapse shadow-md rounded-xl overflow-hidden">
-                    <thead className="bg-azul-claro text-verde text-center">
+                    <thead className="bg-azul-claro text-verde">
                         <tr>
                             <th className="py-3 px-4 font-mono">Id</th>
                             <th className="py-3 px-4 font-mono">Titulo</th>
                             <th className="py-3 px-4 font-mono">Sinopse</th>
+                            <th className="py-3 px-4 font-mono">Escritor</th>
                             <th className="py-3 px-4 font-mono">Publicação</th>
                             <th className="py-3 px-4 font-mono">Ações</th>
                         </tr>
@@ -52,6 +54,7 @@ function LivroHome() {
                                 <td className="py-3 px-4 text-gray-800">{livro.id}</td>
                                 <td className="py-3 px-4 text-gray-800">{livro.nomeLivro}</td>
                                 <td className="py-3 px-4 text-gray-800">{livro.sinopseLivro}</td>
+                                <td className="py-3 px-4 text-gray-800">{livro.autor.nomeAutor}</td>
                                 <td className="py-3 px-4 text-gray-800">{livro.dataPublicacaoLivro}</td>
                                 <td className="py-3 px-4 text-gray-800">
                                     <button className="m-1 px-4 py-2 bg-verde text-white rounded-lg hover:bg-azul-claro" onClick={() => { deletar(livro.id!) }}><FaTrashAlt className="text-branco" /></button>
